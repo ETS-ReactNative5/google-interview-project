@@ -73,6 +73,8 @@ Whew, okay, now moving into a couple of code questions. We don't need you to cod
 
 ### 1. What is wrong with this example, and how would you go about fixing or improving the component?
 
+The issue with this component is that it is a stateful component that should have a specific name referenced in the this.state declaration. 
+
 ```
 class App extends React.Component {
   constructor(props) {
@@ -91,7 +93,7 @@ class App extends React.Component {
 
 ### 2. What's the issue with this component. Why? How would you go about fixing it?
 
-\*\*\*The issue with this component is that the syntax is missing constructor(props), super(props), as well as setting the initial state to 'this.state'
+The issue with this component is that the syntax is missing constructor(props), super(props), as well as setting the initial state to 'this.state'
 
 ```
 class App extends React.Component {
@@ -173,6 +175,11 @@ Thus writing, and the ability to write clearly, logically and to formulate argum
 componentWillMount is a class based lifecycle method that is mainly used to update the state value before the component is rendered to the DOM. There are a few main issues with componentWillMount. One of these includes how the React component doesn’t wait until the componentWillMount is finished before rendering the UI. Although you can start fetching data before the component gets rendered, the response will most likely be returned after the component is rendered to the screen. Also, The componentWillMount method is the only function called on server rendering, and this method also gets called on the client-side. This means that the method will cause performance issues when you need to do server-side rendering.
 
 ### 2. Can you walk me through the cycle of mounting a stateful component? What functions are called in what order? Where would you place a request for data from the API? Why?
+
+A component’s lifecycle is classified into four parts including initialization, mounting, updating, and unmounting. The functions are called in the order of intilization with the constructor function, followed by componentWillMount, componentDidMount, then updating with shouldComponentUpdate, componentWillUpdate, and ComponentDidUpdate. The final function called is componentWillUnmount. 
+
+I would place a request for an api after the componentDidMount portion of the process. This is because at this point the component has mounted on the DOM. 
+
 
 ### 3. If you had unlimited time budget and could fix / improve / change one thing in your last project, what would it be and why?
 
